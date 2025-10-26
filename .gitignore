@@ -1,0 +1,21 @@
+# === Datos ===
+data/raw/
+data/processed/
+*.dta
+*.csv
+*.xlsx
+*.zip
+
+# === Logs / temporales ===
+*.log
+*.tmp
+*.smcl
+*.bak
+
+# === Resultados intermedios ===
+outputs/tables/
+outputs/figures/
+
+# === Archivos del sistema / IDE ===
+.DS_Store
+Thumbs.db
