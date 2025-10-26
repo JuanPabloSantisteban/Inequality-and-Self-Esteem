@@ -3,11 +3,13 @@
 ************************
 **** 1.Load Data *******
 ************************
+
+
 cd "/Users/gabrielsantisteban/Documents/Escuela/10mo Semestre/Inequality-and-Self-Esteem-src"
 
 ** 1.1 Import GDP Data**
 
-import delimited GDP_Data.csv, clear
+import delimited "$RAW/GDP_Data.csv", clear
 drop in 1/3
 keep v1 v2 v64
 rename v1 country
@@ -24,6 +26,18 @@ save GDP_Data.dta, replace
 ** Load data **
 // wid, indicators(shweal sptinc ) perc(p90p100 p99p100 p0p50 ) years(2019) ages(992) pop(j) clear
 // save WID_DATA.dta
+
+capture confirm file "$RAW/WID_DATA.dta"
+if _rc {
+    display "WID data not found locally. Downloading from source..."
+    wid, indicators(shweal sptinc) ///
+        perc(p90p100 p99p100 p0p50) ///
+        years(2019) ages(992) pop(j) clear
+
+    save "$RAW/WID_DATA.dta", replace
+}
+use "$RAW/WID_DATA.dta", clear
+
 
 
 use  WID_DATA.dta, clear
